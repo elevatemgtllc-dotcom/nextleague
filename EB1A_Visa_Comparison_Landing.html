@@ -174,7 +174,6 @@
     
     .comparison-wrapper {
       position: relative;
-      min-height: 600px;
     }
     
     .comparison-card {
@@ -1314,6 +1313,16 @@
 </div>
 
 <script>
+  function updateWrapperHeight() {
+    const wrapper = document.querySelector('.comparison-wrapper');
+    const activeSection = document.querySelector('.comparison-section.active');
+    if (wrapper && activeSection) {
+      requestAnimationFrame(() => {
+        wrapper.style.height = activeSection.offsetHeight + 'px';
+      });
+    }
+  }
+
   function showVisa(visaType) {
     // Hide all sections
     const sections = document.querySelectorAll('.comparison-section');
@@ -1328,23 +1337,17 @@
     activeSection.classList.add('active');
     event.target.classList.add('active');
 
-    // Update wrapper height
-    const wrapper = document.querySelector('.comparison-wrapper');
-    if (wrapper) {
-      setTimeout(() => {
-        wrapper.style.minHeight = activeSection.offsetHeight + 'px';
-      }, 0);
-    }
+    // Update wrapper height after a small delay to allow DOM to settle
+    setTimeout(updateWrapperHeight, 50);
   }
 
   // Set initial height on page load
   window.addEventListener('load', () => {
-    const wrapper = document.querySelector('.comparison-wrapper');
-    const activeSection = document.querySelector('.comparison-section.active');
-    if (wrapper && activeSection) {
-      wrapper.style.minHeight = activeSection.offsetHeight + 'px';
-    }
+    setTimeout(updateWrapperHeight, 100);
   });
+
+  // Also update on resize
+  window.addEventListener('resize', updateWrapperHeight);
 </script>
 
 </body>
