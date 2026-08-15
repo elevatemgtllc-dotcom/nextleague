@@ -1313,16 +1313,6 @@
 </div>
 
 <script>
-  function updateWrapperHeight() {
-    const wrapper = document.querySelector('.comparison-wrapper');
-    const activeSection = document.querySelector('.comparison-section.active');
-    if (wrapper && activeSection) {
-      requestAnimationFrame(() => {
-        wrapper.style.height = activeSection.offsetHeight + 'px';
-      });
-    }
-  }
-
   function showVisa(visaType) {
     // Hide all sections
     const sections = document.querySelectorAll('.comparison-section');
@@ -1336,18 +1326,7 @@
     const activeSection = document.getElementById(visaType);
     activeSection.classList.add('active');
     event.target.classList.add('active');
-
-    // Update wrapper height after a small delay to allow DOM to settle
-    setTimeout(updateWrapperHeight, 50);
   }
-
-  // Set initial height on page load
-  window.addEventListener('load', () => {
-    setTimeout(updateWrapperHeight, 100);
-  });
-
-  // Also update on resize
-  window.addEventListener('resize', updateWrapperHeight);
 </script>
 
 </body>
