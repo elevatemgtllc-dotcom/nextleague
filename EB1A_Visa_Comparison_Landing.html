@@ -174,7 +174,7 @@
     
     .comparison-wrapper {
       position: relative;
-      min-height: 300px;
+      min-height: 600px;
     }
     
     .comparison-card {
@@ -1318,15 +1318,33 @@
     // Hide all sections
     const sections = document.querySelectorAll('.comparison-section');
     sections.forEach(section => section.classList.remove('active'));
-    
+
     // Remove active from all buttons
     const buttons = document.querySelectorAll('.visa-btn');
     buttons.forEach(btn => btn.classList.remove('active'));
-    
+
     // Show selected section and activate button
-    document.getElementById(visaType).classList.add('active');
+    const activeSection = document.getElementById(visaType);
+    activeSection.classList.add('active');
     event.target.classList.add('active');
+
+    // Update wrapper height
+    const wrapper = document.querySelector('.comparison-wrapper');
+    if (wrapper) {
+      setTimeout(() => {
+        wrapper.style.minHeight = activeSection.offsetHeight + 'px';
+      }, 0);
+    }
   }
+
+  // Set initial height on page load
+  window.addEventListener('load', () => {
+    const wrapper = document.querySelector('.comparison-wrapper');
+    const activeSection = document.querySelector('.comparison-section.active');
+    if (wrapper && activeSection) {
+      wrapper.style.minHeight = activeSection.offsetHeight + 'px';
+    }
+  });
 </script>
 
 </body>
