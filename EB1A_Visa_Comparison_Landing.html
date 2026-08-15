@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EB1A vs. All Other Visas — The Next League Program</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #1F3264;
+      --navy-dark: #141F45;
+      --navy-light: #2A4080;
+      --gold: #C9A030;
+      --gold-light: #F3EE9A;
+      --gold-mid: #D4B84A;
+      --gold-dark: #A07828;
+      --red: #EB2441;
+      --red-light: #FF3D55;
+      --red-dark: #A01828;
+      --white: #FFFFFF;
+      --off-white: #F5F1E8;
+      --gray-mid: #8A8880;
+      --gray-light: #D6D3CB;
+      --bg-dark: #0A0A0A;
+      --card-bg: #131313;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { 
+      background: var(--bg-dark); 
+      font-family: 'Lato', sans-serif; 
+      color: var(--white); 
+      line-height: 1.6;
+    }
+    
+    /* ── HEADER ── */
+    .header {
+      padding: 40px 20px;
+      background: linear-gradient(135deg, rgba(31,50,100,0.15) 0%, rgba(201,160,48,0.08) 50%, rgba(235,36,65,0.05) 100%);
+      border-bottom: 3px solid;
+      border-image: linear-gradient(90deg, var(--navy) 33%, var(--gold) 33% 66%, var(--red) 66%) 1;
+      text-align: center;
+    }
+    
+    .header-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    
+    .header-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(28px, 6vw, 56px);
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 8px;
+      line-height: 1.15;
+    }
+    
+    .header-subtitle {
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      color: var(--gray-light);
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+    
+    .header-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      margin-top: 30px;
+    }
+    
+    .stat-box {
+      padding: 15px;
+      background: rgba(201,160,48,0.1);
+      border: 1.5px solid var(--gold);
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .stat-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold-light));
+    }
+    
+    .stat-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+    
+    .stat-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      color: var(--gray-light);
+      line-height: 1.4;
+    }
+    
+    /* ── MAIN CONTAINER ── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+    
+    /* ── VISA SELECTOR ── */
+    .visa-selector {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 10px;
+      margin-bottom: 60px;
+    }
+    
+    .visa-btn {
+      padding: 12px 16px;
+      background: var(--card-bg);
+      border: 1.5px solid rgba(201,160,48,0.3);
+      border-radius: 3px;
+      color: var(--gray-light);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .visa-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+    
+    .visa-btn.active {
+      background: linear-gradient(135deg, var(--gold) 0%, #D4B84A 100%);
+      color: #000;
+      border-color: var(--gold);
+    }
+    
+    /* ── COMPARISON CARD ── */
+    .comparison-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+      pointer-events: none;
+      position: absolute;
+      width: 100%;
+    }
+    
+    .comparison-section.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+      position: static;
+    }
+    
+    .comparison-wrapper {
+      position: relative;
+      min-height: 300px;
+    }
+    
+    .comparison-card {
+      background: var(--card-bg);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 3px;
+      padding: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .comparison-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 45%, var(--red) 75%, var(--red-dark) 100%);
+    }
+    
+    .comparison-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .visa-badge {
+      display: inline-block;
+      padding: 6px 12px;
+      background: rgba(201,160,48,0.15);
+      border: 1px solid var(--gold);
+      border-radius: 3px;
+      color: var(--gold);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .comp-column h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 25px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid rgba(201,160,48,0.3);
+    }
+    
+    .comp-column.eb1a h3 {
+      color: var(--gold);
+    }
+    
+    .comp-item {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    
+    .comp-item:last-child {
+      border-bottom: none;
+    }
+    
+    .comp-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    
+    .comp-value {
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      color: var(--gray-light);
+      line-height: 1.6;
+    }
+    
+    .comp-value.highlight {
+      color: var(--gold);
+      font-weight: 700;
+    }
+    
+    .comp-value.positive {
+      color: #90EE90;
+    }
+    
+    .comp-value.negative {
+      color: #FF6B6B;
+    }
+    
+    /* ── WHY EB1A SECTION ── */
+    .why-section {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 2px solid rgba(201,160,48,0.2);
+    }
+    
+    .why-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    
+    .why-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .why-item {
+      padding: 16px;
+      background: rgba(201,160,48,0.06);
+      border-left: 3px solid var(--gold);
+      border-radius: 3px;
+    }
+    
+    .why-item-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .why-item-text {
+      font-family: 'Lato', sans-serif;
+      font-size: 13px;
+      color: var(--gray-light);
+      line-height: 1.5;
+    }
+    
+    /* ── CLOSING SECTION ── */
+    .closing-section {
+      margin-top: 60px;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(31,50,100,0.12) 0%, rgba(201,160,48,0.08) 50%, rgba(235,36,65,0.06) 100%);
+      border: 2px solid;
+      border-image: linear-gradient(90deg, var(--navy) 33%, var(--gold) 33% 66%, var(--red) 66%) 1;
+      border-radius: 3px;
+      text-align: center;
+    }
+    
+    .closing-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    
+    .closing-text {
+      font-family: 'Lato', sans-serif;
+      font-size: 16px;
+      color: var(--gray-light);
+      margin-bottom: 30px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 14px 28px;
+      border: none;
+      border-radius: 3px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+    
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold) 50%, var(--gold-light) 100%);
+      color: #000;
+      box-shadow: 0 4px 18px rgba(201,160,48,0.35);
+      border: none;
+    }
+    
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(201,160,48,0.45);
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 50%, #FFFBCD 100%);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--gold);
+      border: 1.5px solid var(--gold);
+    }
+    
+    .btn-secondary:hover {
+      background: rgba(201,160,48,0.1);
+      color: var(--white);
+    }
+    
+    .btn-urgency {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 50%, var(--red-light) 100%);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(235,36,65,0.35);
+      border: none;
+    }
+    
+    .btn-urgency:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(235,36,65,0.45);
+    }
+    
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 3px solid;
+      border-image: linear-gradient(90deg, var(--navy) 33%, var(--gold) 33% 66%, var(--red) 66%) 1;
+      margin-top: 80px;
+      background: rgba(31,50,100,0.05);
+    }
+    
+    .footer-text {
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      color: var(--gray-mid);
+      margin-bottom: 12px;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+    }
+    
+    .footer-links a {
+      color: var(--gold);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--white);
+    }
+    
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .container { padding: 40px 16px; }
+      .comparison-card { padding: 24px; }
+      .comparison-grid { grid-template-columns: 1fr; gap: 30px; }
+      .comparison-title { font-size: 24px; }
+      .header-title { font-size: 32px; }
+      .header-stats { grid-template-columns: repeat(2, 1fr); }
+      .cta-buttons { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">EB1A ADVANTAGE</div>
+  <h1 class="header-title">Why EB1A Beats Every Other Visa</h1>
+  <p class="header-subtitle">8 to 12+ months to permanent residency. No sponsor. No lottery. No waiting 20+ years.</p>
+  <div class="header-stats">
+    <div class="stat-box">
+      <div class="stat-num">84.1%</div>
+      <div class="stat-label">Approval Rate<br><span style="font-size: 9px; color: var(--gold);">Independently Audited</span></div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">276+</div>
+      <div class="stat-label">Participants<br><span style="font-size: 9px; color: var(--gold);">3,350+ Mentored</span></div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">0%</div>
+      <div class="stat-label">Employer Dependency<br><span style="font-size: 9px; color: var(--gold);">Your Control</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  
+  <!-- VISA SELECTOR -->
+  <div class="visa-selector">
+    <button class="visa-btn active" onclick="showVisa('h1b')">H-1B</button>
+    <button class="visa-btn" onclick="showVisa('o1')">O-1</button>
+    <button class="visa-btn" onclick="showVisa('eb2')">EB-2</button>
+    <button class="visa-btn" onclick="showVisa('eb1c')">EB-1C</button>
+    <button class="visa-btn" onclick="showVisa('eb3')">EB-3</button>
+    <button class="visa-btn" onclick="showVisa('f1')">F-1/OPT</button>
+    <button class="visa-btn" onclick="showVisa('l1')">L-1</button>
+    <button class="visa-btn" onclick="showVisa('j1')">J-1</button>
+    <button class="visa-btn" onclick="showVisa('dv')">DV Lottery</button>
+  </div>
+
+  <!-- COMPARISON SECTIONS -->
+  <div class="comparison-wrapper">
+    
+    <!-- H-1B -->
+    <div class="comparison-section active" id="h1b">
+      <div class="comparison-card">
+        <h2 class="comparison-title">H-1B <span class="visa-badge">Non-Immigrant</span></h2>
+        <div class="comparison-grid">
+          <div class="comp-column">
+            <h3>H-1B Reality</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value">Temporary work visa</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Sponsorship</div>
+              <div class="comp-value negative">Required (employer owns you)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Timeline to Green Card</div>
+              <div class="comp-value negative">N/A (H-1B does not lead to green card)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Lottery Risk</div>
+              <div class="comp-value negative">65,000 visa cap; ~30% approval rate</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Job Change</div>
+              <div class="comp-value negative">Risky; may require new visa</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$800-$1,500 (USCIS fees)*<br><span style="font-size: 11px; color: var(--gray-mid);">*Attorney fees additional</span></div>
+            </div>
+          </div>
+          
+          <div class="comp-column eb1a">
+            <h3>EB1A Advantage</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value highlight">Permanent residency path</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Sponsorship</div>
+              <div class="comp-value positive">NOT required (you're in control)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Timeline to Green Card</div>
+              <div class="comp-value positive">8 to 12+ months*<br><span style="font-size: 11px; color: var(--gray-mid);">*Based on acuity & priority date availability</span></div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Lottery Risk</div>
+              <div class="comp-value positive">Zero; merit-based 84.1% approval</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Job Change</div>
+              <div class="comp-value positive">Complete freedom (you're permanent)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$1,015 (I-140) + $2,965 (premium processing)*<br><span style="font-size: 11px; color: var(--gray-mid);">*USCIS fees as of 2026. Attorney fees additional.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-section">
+          <div class="why-title">Why H-1B Holders Choose EB1A</div>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-item-title">Skip the Lottery</div>
+              <div class="why-item-text">You've already proven your capability on H-1B. Extraordinary ability is just a few steps further.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Escape Employer Lock</div>
+              <div class="why-item-text">Stop being chained to your current job. With EB1A, you own your future.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">6 Months vs 7+ Years</div>
+              <div class="why-item-text">Calculate the cost of staying on H-1B for another 7 years. EB1A is the exit.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Build on Your Track Record</div>
+              <div class="why-item-text">Everything you've accomplished on H-1B may become evidence for EB1A qualification.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- O-1 -->
+    <div class="comparison-section" id="o1">
+      <div class="comparison-card">
+        <h2 class="comparison-title">O-1 <span class="visa-badge">Non-Immigrant</span></h2>
+        <div class="comparison-grid">
+          <div class="comp-column">
+            <h3>O-1 Reality</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value">Extraordinary ability work visa (temporary)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Sponsorship</div>
+              <div class="comp-value negative">Required (renewal every 1-3 years)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Timeline to Green Card</div>
+              <div class="comp-value negative">Indefinite loop (requires another visa)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Extension</div>
+              <div class="comp-value negative">1-3 years; must renew periodically</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Visa Limbo</div>
+              <div class="comp-value negative">Many get stuck on O-1 for 5+ years</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$800-$1,500/year (perpetual)*<br><span style="font-size: 11px; color: var(--gray-mid);">*Attorney fees additional</span></div>
+            </div>
+          </div>
+
+          <div class="comp-column eb1a">
+            <h3>EB1A Advantage</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value highlight">Extraordinary ability = permanent residency</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Sponsorship</div>
+              <div class="comp-value positive">NOT required (self-petitioning)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Timeline to Green Card</div>
+              <div class="comp-value positive">8 to 12+ months*<br><span style="font-size: 11px; color: var(--gray-mid);">*Based on acuity & priority date availability</span></div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Extension</div>
+              <div class="comp-value positive">Green card doesn't expire; travel freely</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">No More Visa Games</div>
+              <div class="comp-value positive">Permanent status; build your life</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$1,015 (I-140) + $2,965 (premium)*<br><span style="font-size: 11px; color: var(--gray-mid);">*USCIS fees as of 2026. Attorney fees additional.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-section">
+          <div class="why-title">Why O-1 Applicants Switch to EB1A</div>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-item-title">You Already Qualify</div>
+              <div class="why-item-text">If you can prove O-1 extraordinary ability, EB1A criteria may be within reach.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Stop Annual Fee Bleeding</div>
+              <div class="why-item-text">One EB1A cost vs. perpetual O-1 renewals. The math is brutal.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">From Temporary to Permanent</div>
+              <div class="why-item-text">O-1 is perpetual limbo. EB1A is the finish line in 6 months.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Get Out of Employer Dependency</div>
+              <div class="why-item-text">O-1 requires annual sponsorship. EB1A, you self-petition.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EB-2 -->
+    <div class="comparison-section" id="eb2">
+      <div class="comparison-card">
+        <h2 class="comparison-title">EB-2 <span class="visa-badge">Immigrant</span></h2>
+        <div class="comparison-grid">
+          <div class="comp-column">
+            <h3>EB-2 Reality</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value">Employment-based immigrant visa</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Sponsorship</div>
+              <div class="comp-value negative">Required</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Timeline (India/China)</div>
+              <div class="comp-value negative">20+ years on priority date backlog</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Per-Country Caps</div>
+              <div class="comp-value negative">7% per country (devastating for India)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Labor Certification</div>
+              <div class="comp-value negative">Delays 1-2 years before priority date</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$15K-$30K + legal fees</div>
+            </div>
+          </div>
+          
+          <div class="comp-column eb1a">
+            <h3>EB1A Advantage</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value highlight">Immigrant visa (permanent from day 1)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Sponsorship</div>
+              <div class="comp-value positive">NOT required (self-petition)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Timeline (Anyone)</div>
+              <div class="comp-value positive">8 to 12+ months regardless of nationality*<br><span style="font-size: 11px; color: var(--gray-mid);">*Subject to priority date availability</span></div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Per-Country Caps</div>
+              <div class="comp-value positive">Faster movement of priority date</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">No Labor Cert Delays</div>
+              <div class="comp-value positive">Merit-based; straight to approval</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$1,015 (I-140) + $2,965 (premium)*<br><span style="font-size: 11px; color: var(--gray-mid);">*USCIS fees as of 2026. Attorney fees additional.</span></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="why-section">
+          <div class="why-title">Why EB-2 Holders Choose EB1A</div>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-item-title">20+ Year Wait Is Brutal</div>
+              <div class="why-item-text">If you're from India/China on EB-2, you could be waiting until retirement. EB1A is 6 months.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Career Peak Arbitrage</div>
+              <div class="why-item-text">Don't spend your best years waiting. Get permanent residency now while you're at your strongest.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Same Cost, Different Universe</div>
+              <div class="why-item-text">EB-2 costs $15K-$30K and takes 20 years. EB1A costs similar but takes 6 months.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Priority Date Porting</div>
+              <div class="why-item-text">Have an EB-2 priority date? Bring it to EB1A for even faster processing.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EB-1C -->
+    <div class="comparison-section" id="eb1c">
+      <div class="comparison-card">
+        <h2 class="comparison-title">EB-1C <span class="visa-badge">Immigrant</span></h2>
+        <div class="comparison-grid">
+          <div class="comp-column">
+            <h3>EB-1C Reality</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value">Multinational manager/executive visa</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Sponsorship</div>
+              <div class="comp-value negative">Required (employer must qualify)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Timeline to Green Card</div>
+              <div class="comp-value negative">1-2 years</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Capital Requirements</div>
+              <div class="comp-value negative">Employer must prove $1M+ investment</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Scope</div>
+              <div class="comp-value negative">Managers/executives only</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$5K-$15K</div>
+            </div>
+          </div>
+          
+          <div class="comp-column eb1a">
+            <h3>EB1A Advantage</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value highlight">Self-petitioned immigration category</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Sponsorship</div>
+              <div class="comp-value positive">NOT required (you petition for yourself)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Timeline to Green Card</div>
+              <div class="comp-value positive">8 to 12+ months (3-4x faster)*<br><span style="font-size: 11px; color: var(--gray-mid);">*Based on acuity & priority date availability</span></div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">No Capital Requirements</div>
+              <div class="comp-value positive">Merit-based on your accomplishments</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Scope</div>
+              <div class="comp-value positive">Any extraordinary ability in any field</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$1,015 (I-140) + $2,965 (premium)*<br><span style="font-size: 11px; color: var(--gray-mid);">*USCIS fees as of 2026. Attorney fees additional.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-section">
+          <div class="why-title">Why EB-1C Candidates Switch to EB1A</div>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-item-title">You Don't Need Your Employer</div>
+              <div class="why-item-text">EB-1C requires employer sponsorship and capital proof. EB1A requires only your talent.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">3x Faster Timeline</div>
+              <div class="why-item-text">EB-1C is 1-2 years. EB1A is 6 months. That's independence in half the time.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">What If You Change Companies?</div>
+              <div class="why-item-text">EB-1C ties you to the company with capital invested. EB1A has zero employer lock-in.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Beyond Management</div>
+              <div class="why-item-text">EB-1C is managers only. EB1A covers any field with extraordinary ability.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- EB-3 -->
+    <div class="comparison-section" id="eb3">
+      <div class="comparison-card">
+        <h2 class="comparison-title">EB-3 <span class="visa-badge">Immigrant</span></h2>
+        <div class="comparison-grid">
+          <div class="comp-column">
+            <h3>EB-3 Reality</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value">Employment-based skilled/professional</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Sponsorship</div>
+              <div class="comp-value negative">Required</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Timeline to Green Card</div>
+              <div class="comp-value negative">11+ years (massive backlog)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Per-Country Caps</div>
+              <div class="comp-value negative">7% per country</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Labor Certification</div>
+              <div class="comp-value negative">Mandatory 1-2 year delay</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$15K-$30K + legal fees</div>
+            </div>
+          </div>
+          
+          <div class="comp-column eb1a">
+            <h3>EB1A Advantage</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value highlight">Immigrant via self-petition</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Sponsorship</div>
+              <div class="comp-value positive">NOT required</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Timeline to Green Card</div>
+              <div class="comp-value positive">8 to 12+ months (significantly faster)*<br><span style="font-size: 11px; color: var(--gray-mid);">*Based on acuity & priority date availability</span></div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Per-Country Caps</div>
+              <div class="comp-value positive">Faster movement of priority date</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">No Labor Cert Delays</div>
+              <div class="comp-value positive">Skip entire process</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$1,015 (I-140) + $2,965 (premium)*<br><span style="font-size: 11px; color: var(--gray-mid);">*USCIS fees as of 2026. Attorney fees additional.</span></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="why-section">
+          <div class="why-title">Why EB-3 Is a Dead End</div>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-item-title">11+ Year Backlog Is Unreal</div>
+              <div class="why-item-text">You could be in your 60s by the time you get permanent residency. EB1A ends in 6 months.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Life On Hold</div>
+              <div class="why-item-text">Stuck on work visas, can't plan your future, family separated. EB1A ends the uncertainty.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Prove Extraordinary Ability Instead</div>
+              <div class="why-item-text">EB-3 assumes you're average. EB1A recognizes you're top-tier. Which is true?</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Same Field, Different Path</div>
+              <div class="why-item-text">You have skills for EB-3. You have extraordinary ability for EB1A. Which door do you choose?</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- F-1/OPT -->
+    <div class="comparison-section" id="f1">
+      <div class="comparison-card">
+        <h2 class="comparison-title">F-1/OPT <span class="visa-badge">Student → Work</span></h2>
+        <div class="comparison-grid">
+          <div class="comp-column">
+            <h3>F-1/OPT Reality</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value">Student visa → Optional Practical Training</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">OPT Timeline</div>
+              <div class="comp-value negative">3 years (STEM 2 extra years)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Post-OPT Path</div>
+              <div class="comp-value negative">Must find H-1B sponsor (lottery)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">H-1B Lottery Odds</div>
+              <div class="comp-value negative">~30% success rate</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Total Time to Green Card</div>
+              <div class="comp-value negative">5-7+ years (if you win lottery)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">Tuition + visa fees</div>
+            </div>
+          </div>
+          
+          <div class="comp-column eb1a">
+            <h3>EB1A Advantage</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value highlight">Skip H-1B entirely</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">OPT Timeline</div>
+              <div class="comp-value positive">Use OPT to build EB1A evidence</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Post-OPT Path</div>
+              <div class="comp-value positive">Direct to EB1A petition</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Success Rate</div>
+              <div class="comp-value positive">84.1% approval (merit-based)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Total Time to Green Card</div>
+              <div class="comp-value positive">8 to 12+ months after EB1A filing*<br><span style="font-size: 11px; color: var(--gray-mid);">*Based on acuity & priority date availability</span></div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$1,015 (I-140) + $2,965 (premium)*<br><span style="font-size: 11px; color: var(--gray-mid);">*USCIS fees as of 2026. Attorney fees additional.</span></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="why-section">
+          <div class="why-title">Why F-1/OPT Students Choose EB1A</div>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-item-title">Skip the H-1B Gamble</div>
+              <div class="why-item-text">Why play a 30% lottery when EB1A is 84.1% merit-based approval?</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Use OPT Strategically</div>
+              <div class="why-item-text">Build your accomplishment record during OPT, then file EB1A. Smart sequencing.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">No Employer Lock-In</div>
+              <div class="why-item-text">F-1 → H-1B chains you to employer. EB1A you control your destiny.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">5 Years Faster</div>
+              <div class="why-item-text">F-1 route: 5-7 years minimum. EB1A: 6 months after filing. That's your career at stake.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- L-1 -->
+    <div class="comparison-section" id="l1">
+      <div class="comparison-card">
+        <h2 class="comparison-title">L-1 <span class="visa-badge">Non-Immigrant</span></h2>
+        <div class="comparison-grid">
+          <div class="comp-column">
+            <h3>L-1 Reality</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value">Intra-company transfer (temp work)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Requirement</div>
+              <div class="comp-value negative">Must have parent company/subsidiary relationship</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Extension</div>
+              <div class="comp-value negative">5-7 years max (L-1A managers)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Green Card Path</div>
+              <div class="comp-value negative">No direct path; requires another visa</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Job Change</div>
+              <div class="comp-value negative">Locked to company structure</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$5K-$15K</div>
+            </div>
+          </div>
+          
+          <div class="comp-column eb1a">
+            <h3>EB1A Advantage</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value highlight">Direct to permanent residency</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Requirement</div>
+              <div class="comp-value positive">Only your extraordinary ability</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Timeline</div>
+              <div class="comp-value positive">8 to 12+ months to green card*<br><span style="font-size: 11px; color: var(--gray-mid);">*Based on acuity & priority date availability</span></div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Green Card Path</div>
+              <div class="comp-value positive">Direct self-petition</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Job Change</div>
+              <div class="comp-value positive">Complete freedom (permanent resident)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$1,015 (I-140) + $2,965 (premium)*<br><span style="font-size: 11px; color: var(--gray-mid);">*USCIS fees as of 2026. Attorney fees additional.</span></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="why-section">
+          <div class="why-title">Why L-1 Expats Choose EB1A</div>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-item-title">Stop Being Locked In</div>
+              <div class="why-item-text">L-1 ties you to company structure. Want to leave? Visa ends. EB1A: you own your status.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Your Management Skills Prove Extraordinary Ability</div>
+              <div class="why-item-text">You've already demonstrated capability on L-1. That's half of EB1A evidence right there.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">No More Company Dependency</div>
+              <div class="why-item-text">L-1 requires parent/subsidiary relationship. EB1A requires only you.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">6 Months vs 7 Year Limbo</div>
+              <div class="why-item-text">L-1 maxes out at 7 years temporary. EB1A gets you permanent in 6 months.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- J-1 -->
+    <div class="comparison-section" id="j1">
+      <div class="comparison-card">
+        <h2 class="comparison-title">J-1 <span class="visa-badge">Exchange Visitor</span></h2>
+        <div class="comparison-grid">
+          <div class="comp-column">
+            <h3>J-1 Reality</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value">Exchange visitor (scholar, teacher, researcher)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Control</div>
+              <div class="comp-value negative">Program sponsor controls your visa</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Two-Year Rule</div>
+              <div class="comp-value negative">Available for select nationalities only*<br><span style="font-size: 11px; color: var(--gray-mid);">*Many nationals must return home 2 years</span></div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Extension</div>
+              <div class="comp-value negative">1-3 years depending on program</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Post-J-1 Path</div>
+              <div class="comp-value negative">Requires H-1B or other visa</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$0-$500 (sponsor-dependent)</div>
+            </div>
+          </div>
+          
+          <div class="comp-column eb1a">
+            <h3>EB1A Advantage</h3>
+            <div class="comp-item">
+              <div class="comp-label">Status</div>
+              <div class="comp-value highlight">Permanent residency directly</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Control</div>
+              <div class="comp-value positive">You petition for yourself</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">No Home Country Requirement</div>
+              <div class="comp-value positive">Get green card, stay in US</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Timeline</div>
+              <div class="comp-value positive">8 to 12+ months to permanent status*<br><span style="font-size: 11px; color: var(--gray-mid);">*Based on acuity & priority date availability</span></div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Direct Green Card</div>
+              <div class="comp-value positive">No visa transitions needed</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$1,015 (I-140) + $2,965 (premium)*<br><span style="font-size: 11px; color: var(--gray-mid);">*USCIS fees as of 2026. Attorney fees additional.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-section">
+          <div class="why-title">Why J-1 Scholars Choose EB1A</div>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-item-title">No Two-Year Home Return</div>
+              <div class="why-item-text">Many J-1 visa holders face mandatory 2-year home country residency. EB1A bypasses this entirely.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Your Research Proves Extraordinary Ability</div>
+              <div class="why-item-text">Publications, citations, presentations—these are exactly EB1A evidence.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Program Independence</div>
+              <div class="why-item-text">J-1 ties you to sponsor institution. EB1A, you're free to work anywhere.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Permanent Now, Not Years Later</div>
+              <div class="why-item-text">J-1 → H-1B lottery → years waiting. EB1A → permanent in 6 months.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DV -->
+    <div class="comparison-section" id="dv">
+      <div class="comparison-card">
+        <h2 class="comparison-title">DV Lottery <span class="visa-badge">Random Selection</span></h2>
+        <div class="comparison-grid">
+          <div class="comp-column">
+            <h3>DV Lottery Reality</h3>
+            <div class="comp-item">
+              <div class="comp-label">Selection Method</div>
+              <div class="comp-value negative">Annual random lottery (available for select nationalities only)*<br><span style="font-size: 11px; color: var(--gray-mid);">*Not available for nationals of high-sending countries</span></div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Success Rate</div>
+              <div class="comp-value negative">0.5-2% annually (1 in 10,000+)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$0-$100 to enter</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Path Certainty</div>
+              <div class="comp-value negative">Hope-based (literally gambling)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">If Selected...</div>
+              <div class="comp-value negative">Still 1-3 years of processing</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Disadvantage</div>
+              <div class="comp-value negative">Discriminates against high-sending countries</div>
+            </div>
+          </div>
+          
+          <div class="comp-column eb1a">
+            <h3>EB1A Advantage</h3>
+            <div class="comp-item">
+              <div class="comp-label">Selection Method</div>
+              <div class="comp-value highlight">Merit-based (extraordinary ability)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Success Rate</div>
+              <div class="comp-value positive">84.1% with NLP (not random)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Cost</div>
+              <div class="comp-value">$1,500-$5K (similar)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Path Certainty</div>
+              <div class="comp-value positive">Proof-based (you control outcome)</div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">Timeline</div>
+              <div class="comp-value positive">8 to 12+ months to green card*<br><span style="font-size: 11px; color: var(--gray-mid);">*Based on acuity & priority date availability</span></div>
+            </div>
+            <div class="comp-item">
+              <div class="comp-label">No Discrimination</div>
+              <div class="comp-value positive">Merit-based for all nationalities</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="why-section">
+          <div class="why-title">Why EB1A Is the Better Path for Professionals</div>
+          <div class="why-list">
+            <div class="why-item">
+              <div class="why-item-title">Odds Are Brutal</div>
+              <div class="why-item-text">1 in 10,000+. You have better odds of being struck by lightning. Don't leave your future to chance.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">Merit > Luck</div>
+              <div class="why-item-text">You earned your abilities. Why not prove them instead of hoping for a lottery win?</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">DV Discriminates Against Your Country</div>
+              <div class="why-item-text">If you're from a high-sending country, DV actually works against you. EB1A has zero discrimination.</div>
+            </div>
+            <div class="why-item">
+              <div class="why-item-title">EB1A Is Guaranteed Path</div>
+              <div class="why-item-text">Same green card at the end, but with EB1A you control the outcome. 84.1% approval vs. 0.5% lottery.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CLOSING SECTION -->
+  <div class="closing-section">
+    <h2 class="closing-title">Ready to Stop Waiting?</h2>
+    <p class="closing-text">Permanent residency in 8 to 12+ months. No sponsor. No lottery. No 20-year wait. Just proof of your extraordinary ability and a clear path to the American dream.</p>
+    <div class="cta-buttons">
+      <button class="btn btn-primary" onclick="alert('Redirecting to booking...')">Book Your Discovery Call →</button>
+      <button class="btn btn-secondary" onclick="alert('Redirecting to program details...')">View Full Program</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-text">The Next League Program | 84.1% EB1A Approval Rate | 276+ Participants | Independently Audited</div>
+  <div class="footer-links">
+    <a href="#">Program Details</a>
+    <a href="#">Success Stories</a>
+    <a href="#">EB1A FAQ</a>
+    <a href="#">Contact</a>
+    <a href="#">Testimonials</a>
+  </div>
+</div>
+
+<script>
+  function showVisa(visaType) {
+    // Hide all sections
+    const sections = document.querySelectorAll('.comparison-section');
+    sections.forEach(section => section.classList.remove('active'));
+    
+    // Remove active from all buttons
+    const buttons = document.querySelectorAll('.visa-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    // Show selected section and activate button
+    document.getElementById(visaType).classList.add('active');
+    event.target.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
