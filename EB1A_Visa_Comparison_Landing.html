@@ -468,46 +468,70 @@
 
 <!-- HEADER -->
 <div class="header">
-  <svg style="width: 120px; height: 120px; margin: 0 auto 20px; display: block;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-    <!-- Outer gold ring -->
-    <circle cx="100" cy="100" r="98" fill="none" stroke="#C9A030" stroke-width="3"/>
-    <circle cx="100" cy="100" r="92" fill="none" stroke="#C9A030" stroke-width="1.5"/>
-    <!-- Navy background -->
-    <circle cx="100" cy="100" r="90" fill="#1F3264"/>
-    <!-- Phoenix (stylized bird) -->
-    <g transform="translate(100, 100)">
-      <!-- Phoenix body -->
-      <ellipse cx="0" cy="5" rx="12" ry="18" fill="#F3EE9A"/>
+  <svg style="width: 140px; height: 140px; margin: 0 auto 25px; display: block;" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+    <!-- Outer gold ring (thick) -->
+    <circle cx="120" cy="120" r="115" fill="none" stroke="#C9A030" stroke-width="4"/>
+    <!-- Inner gold ring -->
+    <circle cx="120" cy="120" r="109" fill="none" stroke="#B8942A" stroke-width="2"/>
+    <!-- Navy background circle -->
+    <circle cx="120" cy="120" r="105" fill="#1F3264"/>
+
+    <!-- Phoenix figure -->
+    <g transform="translate(120, 90)">
+      <!-- Phoenix body/breast -->
+      <ellipse cx="0" cy="8" rx="16" ry="24" fill="#E8D89E"/>
       <!-- Phoenix head -->
-      <circle cx="0" cy="-15" r="8" fill="#F3EE9A"/>
-      <!-- Phoenix crest/beak -->
-      <path d="M 8 -15 Q 15 -18 18 -12" stroke="#F3EE9A" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <!-- Left wing -->
-      <path d="M -8 0 Q -25 -10 -28 5 Q -25 8 -12 5" fill="#F3EE9A"/>
-      <!-- Right wing -->
-      <path d="M 8 0 Q 25 -10 28 5 Q 25 8 12 5" fill="#F3EE9A"/>
-      <!-- Wing details -->
-      <g stroke="#F3EE9A" stroke-width="1" fill="none">
-        <line x1="-15" y1="-5" x2="-22" y2="-8"/>
-        <line x1="-18" y1="0" x2="-26" y2="0"/>
-        <line x1="-15" y1="5" x2="-22" y2="8"/>
-        <line x1="15" y1="-5" x2="22" y2="-8"/>
-        <line x1="18" y1="0" x2="26" y2="0"/>
-        <line x1="15" y1="5" x2="22" y2="8"/>
+      <circle cx="0" cy="-18" r="10" fill="#E8D89E"/>
+      <!-- Phoenix crest (top of head) -->
+      <path d="M -3 -28 Q -8 -35 -5 -42 M 3 -28 Q 8 -35 5 -42" stroke="#E8D89E" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <!-- Beak -->
+      <path d="M 9 -18 L 20 -16 L 18 -14 Z" fill="#E8D89E"/>
+
+      <!-- Left wing - upper -->
+      <path d="M -12 -5 Q -35 -15 -42 -5 Q -35 0 -15 0" fill="#E8D89E" opacity="0.95"/>
+      <!-- Left wing feathers -->
+      <g stroke="#D4B84A" stroke-width="1.5" fill="none" opacity="0.7">
+        <path d="M -18 -10 Q -28 -15 -35 -12"/>
+        <path d="M -22 -6 Q -32 -10 -40 -8"/>
+        <path d="M -20 0 Q -30 -2 -38 0"/>
       </g>
+
+      <!-- Right wing - upper -->
+      <path d="M 12 -5 Q 35 -15 42 -5 Q 35 0 15 0" fill="#E8D89E" opacity="0.95"/>
+      <!-- Right wing feathers -->
+      <g stroke="#D4B84A" stroke-width="1.5" fill="none" opacity="0.7">
+        <path d="M 18 -10 Q 28 -15 35 -12"/>
+        <path d="M 22 -6 Q 32 -10 40 -8"/>
+        <path d="M 20 0 Q 30 -2 38 0"/>
+      </g>
+
+      <!-- Wing lower sections -->
+      <path d="M -10 8 Q -32 8 -38 18 Q -28 20 -12 15" fill="#E8D89E" opacity="0.90"/>
+      <path d="M 10 8 Q 32 8 38 18 Q 28 20 12 15" fill="#E8D89E" opacity="0.90"/>
+
       <!-- Tail feathers -->
-      <path d="M 0 20 Q -8 28 -5 38" stroke="#F3EE9A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <path d="M 0 20 Q 8 28 5 38" stroke="#F3EE9A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M -6 32 Q -15 42 -12 55" stroke="#E8D89E" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M 0 34 Q 0 46 2 58" stroke="#E8D89E" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M 6 32 Q 15 42 12 55" stroke="#E8D89E" stroke-width="3" fill="none" stroke-linecap="round"/>
     </g>
-    <!-- Text on circle - top -->
-    <path id="topCurve" d="M 50,100 A 50,50 0 0,1 150,100" fill="none"/>
-    <text font-family="Montserrat, sans-serif" font-size="11" font-weight="800" letter-spacing="2" fill="#FFFFFF" text-anchor="middle">
-      <textPath href="#topCurve" startOffset="50%">NEXT LEAGUE EXECUTIVE BOARD</textPath>
+
+    <!-- Text on circle - top arc -->
+    <defs>
+      <path id="topArc" d="M 40,120 A 80,80 0 0,1 200,120" fill="none"/>
+      <path id="bottomArc" d="M 200,120 A 80,80 0 0,1 40,120" fill="none"/>
+    </defs>
+
+    <text font-family="Montserrat, sans-serif" font-size="13" font-weight="800" letter-spacing="2" fill="#FFFFFF">
+      <textPath href="#topArc" startOffset="50%" text-anchor="middle">
+        NEXT LEAGUE EXECUTIVE BOARD
+      </textPath>
     </text>
-    <!-- Text on circle - bottom -->
-    <path id="bottomCurve" d="M 150,100 A 50,50 0 0,1 50,100" fill="none"/>
-    <text font-family="Montserrat, sans-serif" font-size="10" font-weight="700" letter-spacing="1.5" fill="#FFFFFF" text-anchor="middle">
-      <textPath href="#bottomCurve" startOffset="50%">TRANSFORM, EVOLVE AND LAND YOUR DREAM</textPath>
+
+    <!-- Text on circle - bottom arc -->
+    <text font-family="Montserrat, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5" fill="#FFFFFF">
+      <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">
+        TRANSFORM, EVOLVE AND LAND YOUR DREAM
+      </textPath>
     </text>
   </svg>
   <div class="header-eyebrow">EB1A ADVANTAGE</div>
