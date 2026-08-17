@@ -88,6 +88,16 @@
       border-radius: 3px;
       position: relative;
       overflow: hidden;
+      animation: goldGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes goldGlow {
+      0%, 100% {
+        box-shadow: 0 0 8px rgba(201,160,48,0.3), inset 0 0 8px rgba(201,160,48,0.1);
+      }
+      50% {
+        box-shadow: 0 0 20px rgba(201,160,48,0.6), inset 0 0 12px rgba(201,160,48,0.2);
+      }
     }
     
     .stat-box::before {
