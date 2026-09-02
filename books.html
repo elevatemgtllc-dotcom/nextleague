@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranjeet's Books - EB-1A Excellence & Professional Development</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1a3a52 0%, #2c5aa0 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-cover {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .book-cover-placeholder {
+            text-align: center;
+            color: #666;
+        }
+
+        .book-cover-placeholder h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+            padding: 20px;
+        }
+
+        .book-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-number {
+            display: inline-block;
+            background: #2c5aa0;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .book-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #1a3a52;
+            line-height: 1.3;
+        }
+
+        .book-description {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 25px;
+            flex-grow: 1;
+            line-height: 1.7;
+        }
+
+        .book-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #2c5aa0 0%, #1a3a52 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-align: center;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-top: auto;
+        }
+
+        .book-cta:hover {
+            background: linear-gradient(135deg, #1a3a52 0%, #0f2438 100%);
+            transform: scale(1.02);
+        }
+
+        .section-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-intro h2 {
+            font-size: 2rem;
+            color: #1a3a52;
+            margin-bottom: 15px;
+        }
+
+        .section-intro p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .books-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 40px 20px;
+            }
+
+            .book-content {
+                padding: 20px;
+            }
+
+            .book-title {
+                font-size: 1.2rem;
+            }
+
+            .book-description {
+                font-size: 0.9rem;
+            }
+        }
+
+        footer {
+            background: #1a3a52;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        .disclaimer {
+            font-size: 0.85rem;
+            opacity: 0.8;
+            margin-top: 15px;
+            line-height: 1.5;
+        }
+
+        .book-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .book-links a {
+            flex: 1;
+            display: inline-block;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            background: #f0f0f0;
+            color: #2c5aa0;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .book-links a:hover {
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ranjeet's Books</h1>
+        <p>Master guides to EB-1A excellence, professional development, and immigration strategy by Ranjeet S. Mudholkar</p>
+    </header>
+
+    <div class="container">
+        <div class="section-intro" style="margin-top: 60px;">
+            <h2>Complete Your Library</h2>
+            <p>Discover the essential handbooks for EB-1A applicants, immigration professionals, and aspiring leaders</p>
+        </div>
+
+        <div class="books-grid">
+            <!-- Book 1: EB-1A Handbook -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <div class="book-cover-placeholder">
+                        <h3>The EB-1A Extraordinary Ability Handbook</h3>
+                        <p style="font-size: 0.9rem;">A Student Guide to Eligibility, Evidence and Procedure</p>
+                    </div>
+                </div>
+                <div class="book-content">
+                    <span class="book-number">Book 1</span>
+                    <h3 class="book-title">The EB-1A Extraordinary Ability Handbook</h3>
+                    <p style="font-size: 0.85rem; color: #888; margin-bottom: 12px;">A Student Guide to Eligibility, Evidence and Procedure</p>
+                    <div class="book-description">
+                        The EB-1A classification is widely discussed and often misunderstood. This handbook replaces common misconceptions with a clear, practical and legally grounded understanding of how the EB-1A extraordinary ability green card works. Written by an EB-1A recipient, it covers the framework, the ten regulatory criteria, evidence strategy, and the complete procedure from Form I-140 through consular processing.
+                    </div>
+                    <div class="book-links">
+                        <a href="https://www.amazon.com/dp/B0HHB7F3B9?lv=shuf&bestFormat=true&social_share=cm_sw_r_ffobk_cso_cp_mwn_dp_D3RWJ6009YJGK2H0QD3E&channelId=704&ref_=cm_sw_r_ffobk_cso_cp_mwn_dp_D3RWJ6009YJGK2H0QD3E&plpRedirect=mhFallback" target="_blank">View on Amazon</a>
+                    </div>
+                    <a href="https://www.amazon.com/dp/B0HHB7F3B9?lv=shuf&bestFormat=true&social_share=cm_sw_r_ffobk_cso_cp_mwn_dp_D3RWJ6009YJGK2H0QD3E&channelId=704&ref_=cm_sw_r_ffobk_cso_cp_mwn_dp_D3RWJ6009YJGK2H0QD3E&plpRedirect=mhFallback" class="book-cta" target="_blank">Order Now</a>
+                </div>
+            </div>
+
+            <!-- Book 2: Extraordinary Ability, Documented -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <div class="book-cover-placeholder">
+                        <h3>Extraordinary Ability, Documented</h3>
+                        <p style="font-size: 0.9rem;">The Definitive Guide to the EB-1A Green Card</p>
+                    </div>
+                </div>
+                <div class="book-content">
+                    <span class="book-number">Book 2</span>
+                    <h3 class="book-title">Extraordinary Ability, Documented</h3>
+                    <p style="font-size: 0.85rem; color: #888; margin-bottom: 12px;">The Definitive Guide to the EB-1A Green Card: Law, Evidence and the Professional Record</p>
+                    <div class="book-description">
+                        The definitive reference for EB-1A petitions. This comprehensive guide treats a petition as an argument built from documents rather than a checklist. It explains the statute and regulation as written, covers all ten criteria in detail, and provides working templates, evidence architecture guidance, and complete coverage of the adjudication process through consular processing.
+                    </div>
+                    <div class="book-links">
+                        <a href="https://www.amazon.com/dp/B0HH94D4PM?lv=shuf&bestFormat=true&social_share=cm_sw_r_ffobk_cso_cp_mwn_dp_2HXG3TK31MPEPVWZFA99&channelId=704&ref_=cm_sw_r_ffobk_cso_cp_mwn_dp_2HXG3TK31MPEPVWZFA99&plpRedirect=mhFallback" target="_blank">View on Amazon</a>
+                    </div>
+                    <a href="https://www.amazon.com/dp/B0HH94D4PM?lv=shuf&bestFormat=true&social_share=cm_sw_r_ffobk_cso_cp_mwn_dp_2HXG3TK31MPEPVWZFA99&channelId=704&ref_=cm_sw_r_ffobk_cso_cp_mwn_dp_2HXG3TK31MPEPVWZFA99&plpRedirect=mhFallback" class="book-cta" target="_blank">Order Now</a>
+                </div>
+            </div>
+
+            <!-- Book 3: From Data to Enlightenment -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <div class="book-cover-placeholder">
+                        <h3>From Data to Enlightenment</h3>
+                        <p style="font-size: 0.9rem;">The DISK-WE Model of Expertise-Learning State, Progressive Experience and Impact</p>
+                    </div>
+                </div>
+                <div class="book-content">
+                    <span class="book-number">Book 3</span>
+                    <h3 class="book-title">From Data to Enlightenment</h3>
+                    <p style="font-size: 0.85rem; color: #888; margin-bottom: 12px;">The DISK-WE Model of Expertise-Learning State, Progressive Experience and Impact</p>
+                    <div class="book-description">
+                        Understand your professional standing in three dimensions: learning state, progressive experience, and impact. Based on U.S. Patent No. 11,989,680, this book explains the patented DISK-WE model and the D.O.N.E. process. Features worksheets, case studies, and practical guidance for scientists, educators, founders, artists, and professionals seeking clarity on their actual expertise.
+                    </div>
+                    <div class="book-links">
+                        <a href="https://www.amazon.com/dp/B0HHD8JN92?lv=shuf&bestFormat=true&social_share=cm_sw_r_ffobk_cso_cp_mwn_dp_3HDPDNRYAWSX115HRVKE&channelId=704&ref_=cm_sw_r_ffobk_cso_cp_mwn_dp_3HDPDNRYAWSX115HRVKE&plpRedirect=mhFallback" target="_blank">View on Amazon</a>
+                    </div>
+                    <a href="https://www.amazon.com/dp/B0HHD8JN92?lv=shuf&bestFormat=true&social_share=cm_sw_r_ffobk_cso_cp_mwn_dp_3HDPDNRYAWSX115HRVKE&channelId=704&ref_=cm_sw_r_ffobk_cso_cp_mwn_dp_3HDPDNRYAWSX115HRVKE&plpRedirect=mhFallback" class="book-cta" target="_blank">Order Now</a>
+                </div>
+            </div>
+
+            <!-- Book 4: The Reflexive Petition -->
+            <div class="book-card">
+                <div class="book-cover">
+                    <div class="book-cover-placeholder">
+                        <h3>The Reflexive Petition</h3>
+                        <p style="font-size: 0.9rem;">A Practitioner's Guide to EB-1A, O-1A, and National Interest Waiver Petitions</p>
+                    </div>
+                </div>
+                <div class="book-content">
+                    <span class="book-number">Book 4</span>
+                    <h3 class="book-title">The Reflexive Petition</h3>
+                    <p style="font-size: 0.85rem; color: #888; margin-bottom: 12px;">A Practitioner's Guide to EB-1A, O-1A, and National Interest Waiver Petitions</p>
+                    <div class="book-description">
+                        Treat immigration petitions as interconnected evidentiary systems. This groundbreaking guide introduces Reflexive Category Theory and patent-pending methods to create petitions that are complete, consistent, traceable and tested before filing. Includes side-by-side comparison of conventional vs. reflexive petitions, seventeen practitioner tools, and comprehensive coverage of all three visa categories.
+                    </div>
+                    <div class="book-links">
+                        <a href="https://www.amazon.com/dp/B0HH8276KM?lv=shuf&bestFormat=true&social_share=cm_sw_r_ffobk_cso_cp_mwn_dp_MEEBGWZRSZAE3GN7PA8G&channelId=704&ref_=cm_sw_r_ffobk_cso_cp_mwn_dp_MEEBGWZRSZAE3GN7PA8G&plpRedirect=mhFallback" target="_blank">View on Amazon</a>
+                    </div>
+                    <a href="https://www.amazon.com/dp/B0HH8276KM?lv=shuf&bestFormat=true&social_share=cm_sw_r_ffobk_cso_cp_mwn_dp_MEEBGWZRSZAE3GN7PA8G&channelId=704&ref_=cm_sw_r_ffobk_cso_cp_mwn_dp_MEEBGWZRSZAE3GN7PA8G&plpRedirect=mhFallback" class="book-cta" target="_blank">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>About the Author</strong></p>
+        <p>Ranjeet S. Mudholkar is an EB-1A recipient and inventor of U.S. Patent No. 11,989,680. He is the Principal Coach and CEO of Next League Executive Board LLC, an Alternative Business Structure licensed by the Arizona Supreme Court.</p>
+        <div class="disclaimer">
+            <p>These books are educational materials and are not legal advice. Readers should consult a qualified U.S. immigration attorney about their own circumstances.</p>
+        </div>
+    </footer>
+</body>
+</html>
