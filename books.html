@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ranjeet's Books - EB-1A Excellence & Professional Development</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -13,498 +13,473 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             color: #1a1a1a;
-            background-color: #fafaf9;
-            line-height: 1.6;
-        }
-
-        header {
-            background: #ffffff;
-            border-bottom: 1px solid #e5e5e5;
-            padding: 80px 40px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-            letter-spacing: -1px;
-            color: #0a0a0a;
-        }
-
-        header .tagline {
-            font-size: 1.25rem;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
-            font-weight: 500;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            min-height: 100vh;
             line-height: 1.6;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 40px 20px;
         }
 
-        .intro-section {
+        header {
             text-align: center;
-            padding: 80px 40px 60px;
-            max-width: 900px;
-            margin: 0 auto;
+            margin-bottom: 80px;
+            padding-top: 40px;
         }
 
-        .intro-section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            margin-bottom: 30px;
-            color: #0a0a0a;
+        header h1 {
+            font-size: 3.5rem;
             font-weight: 700;
+            color: #0a2463;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
         }
 
-        .intro-section p {
-            font-size: 1.1rem;
+        header p {
+            font-size: 1.3rem;
             color: #555;
-            line-height: 1.8;
-        }
-
-        .books-container {
-            padding: 60px 40px;
-            max-width: 1400px;
+            max-width: 700px;
             margin: 0 auto;
+            font-weight: 500;
         }
 
-        .book-section {
+        .books-display {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 100px;
             align-items: center;
-            margin-bottom: 140px;
+            margin-bottom: 120px;
             padding: 60px 0;
-            border-bottom: 1px solid #e5e5e5;
         }
 
-        .book-section:last-child {
-            border-bottom: none;
-        }
-
-        .book-section.alternate {
-            direction: rtl;
-        }
-
-        .book-section.alternate > * {
-            direction: ltr;
-        }
-
-        .book-visual {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            perspective: 1000px;
-        }
-
-        .book-mockup {
+        .book-stack {
             position: relative;
+            height: 500px;
+            perspective: 1200px;
+        }
+
+        .book-item {
+            position: absolute;
             width: 280px;
             height: 420px;
-            background: linear-gradient(135deg, #f5f3f0 0%, #e8e5e0 100%);
-            border-radius: 8px;
-            box-shadow: 0 40px 60px rgba(0, 0, 0, 0.15),
-                        0 20px 40px rgba(0, 0, 0, 0.1),
-                        inset 0 1px 0 rgba(255, 255, 255, 0.6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transform: rotateY(-15deg) rotateX(5deg);
-            transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-        }
-
-        .book-section:hover .book-mockup {
-            transform: rotateY(-5deg) rotateX(2deg);
-        }
-
-        .book-mockup-content {
-            width: 100%;
-            height: 100%;
             background: white;
-            border-radius: 6px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            text-align: center;
-            font-size: 0.85rem;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
             overflow: hidden;
-            color: #333;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
-        .book-mockup-content img {
+        .book-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 4px;
         }
 
-        .book-mockup-content h3 {
-            font-size: 1.1rem;
+        /* Book 1 - Main book */
+        .book-item:nth-child(1) {
+            left: 0;
+            top: 40px;
+            z-index: 3;
+            transform: rotateY(-8deg) rotateX(2deg);
+            box-shadow:
+                -20px 30px 60px rgba(10, 36, 99, 0.2),
+                0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-item:nth-child(1):hover {
+            transform: rotateY(-5deg) rotateX(1deg);
+            box-shadow:
+                -20px 40px 80px rgba(10, 36, 99, 0.25),
+                0 30px 80px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Book 2 - Stacked right */
+        .book-item:nth-child(2) {
+            right: 0;
+            top: 80px;
+            z-index: 2;
+            transform: translateX(30px) rotateY(8deg) rotateX(-2deg);
+        }
+
+        .book-item:nth-child(2):hover {
+            transform: translateX(35px) rotateY(8deg) rotateX(-2deg);
+        }
+
+        /* Book 3 - Stacked right */
+        .book-item:nth-child(3) {
+            right: 0;
+            top: 160px;
+            z-index: 1;
+            transform: translateX(60px) rotateY(12deg) rotateX(-4deg);
+        }
+
+        .book-item:nth-child(3):hover {
+            transform: translateX(65px) rotateY(12deg) rotateX(-4deg);
+        }
+
+        /* Book 4 - Stacked right */
+        .book-item:nth-child(4) {
+            right: 0;
+            top: 240px;
+            z-index: 0;
+            transform: translateX(90px) rotateY(16deg) rotateX(-6deg);
+        }
+
+        .book-item:nth-child(4):hover {
+            transform: translateX(95px) rotateY(16deg) rotateX(-6deg);
+        }
+
+        .book-info {
+            padding: 40px;
+        }
+
+        .book-info h2 {
+            font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 15px;
-            line-height: 1.3;
+            color: #0a2463;
+            margin-bottom: 20px;
+            line-height: 1.2;
         }
 
-        .book-content {
+        .book-info p {
+            font-size: 1.05rem;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .book-cta {
+            display: inline-block;
+            background: linear-gradient(135deg, #0a2463 0%, #1a4d9e 100%);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(10, 36, 99, 0.2);
+        }
+
+        .book-cta:hover {
+            background: linear-gradient(135deg, #1a4d9e 0%, #2a5fb8 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(10, 36, 99, 0.3);
+        }
+
+        .all-books-section {
+            margin-top: 120px;
+            padding-top: 80px;
+            border-top: 2px solid rgba(10, 36, 99, 0.1);
+        }
+
+        .all-books-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #0a2463;
+            margin-bottom: 60px;
+            font-weight: 700;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .book-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(10, 36, 99, 0.15);
+        }
+
+        .book-card-image {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .book-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .book-card:hover .book-card-image img {
+            transform: scale(1.05);
+        }
+
+        .book-card-content {
+            padding: 30px;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
         .book-number {
-            display: inline-block;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            color: #8b7355;
-            margin-bottom: 15px;
+            color: #1a4d9e;
+            margin-bottom: 12px;
         }
 
-        .book-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+        .book-card h3 {
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 20px;
-            color: #0a0a0a;
-            line-height: 1.2;
+            color: #0a2463;
+            margin-bottom: 15px;
+            line-height: 1.3;
         }
 
-        .book-subtitle {
-            font-size: 1.05rem;
-            color: #888;
+        .book-card p {
+            font-size: 0.95rem;
+            color: #666;
             margin-bottom: 25px;
-            font-weight: 500;
-            font-style: italic;
+            flex-grow: 1;
+            line-height: 1.7;
         }
 
-        .book-description {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 35px;
-            line-height: 1.8;
-            text-align: justify;
-        }
-
-        .book-cta-group {
-            display: flex;
-            gap: 15px;
-        }
-
-        .book-cta {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #0a0a0a;
+        .book-card-cta {
+            display: inline-block;
+            background: #0a2463;
             color: white;
-            padding: 15px 40px;
-            border-radius: 4px;
+            padding: 12px 28px;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
             transition: all 0.3s ease;
-            border: 2px solid #0a0a0a;
-            cursor: pointer;
+            text-align: center;
+            border: 2px solid #0a2463;
         }
 
-        .book-cta:hover {
-            background: #333;
-            border-color: #333;
-            transform: translateY(-2px);
-        }
-
-        .book-cta.secondary {
-            background: transparent;
-            color: #0a0a0a;
-            border-color: #0a0a0a;
-        }
-
-        .book-cta.secondary:hover {
-            background: #f0f0f0;
+        .book-card-cta:hover {
+            background: white;
+            color: #0a2463;
         }
 
         footer {
-            background: #0a0a0a;
-            color: white;
             text-align: center;
-            padding: 60px 40px;
-            margin-top: 80px;
-        }
-
-        footer .author-section {
-            max-width: 800px;
-            margin: 0 auto;
-            margin-bottom: 30px;
-        }
-
-        footer h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            padding: 60px 20px;
+            border-top: 2px solid rgba(10, 36, 99, 0.1);
+            margin-top: 100px;
         }
 
         footer p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-            color: #ccc;
+            color: #666;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
         }
 
         .disclaimer {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-top: 25px;
-            line-height: 1.6;
-            border-top: 1px solid #333;
-            padding-top: 25px;
+            font-size: 0.85rem;
+            color: #999;
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         @media (max-width: 1024px) {
-            header h1 {
-                font-size: 2.8rem;
-            }
-
-            header .tagline {
-                font-size: 1.1rem;
-            }
-
-            .container {
-                padding: 0 30px;
-            }
-
-            .book-section {
+            .books-display {
                 grid-template-columns: 1fr;
-                gap: 50px;
-                margin-bottom: 80px;
+                gap: 60px;
             }
 
-            .book-section.alternate {
-                direction: ltr;
+            .book-info {
+                padding: 30px;
             }
 
-            .book-mockup {
-                transform: rotateY(-10deg) rotateX(3deg);
-            }
-
-            .book-section:hover .book-mockup {
-                transform: rotateY(-5deg) rotateX(2deg);
-            }
-
-            .book-title {
+            .book-info h2 {
                 font-size: 1.8rem;
             }
 
-            .intro-section h2 {
-                font-size: 2.2rem;
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.1rem;
             }
         }
 
         @media (max-width: 768px) {
-            header {
-                padding: 50px 20px;
-            }
-
             header h1 {
                 font-size: 2rem;
             }
 
-            header .tagline {
+            header p {
                 font-size: 1rem;
             }
 
-            .container {
-                padding: 0 20px;
+            .book-stack {
+                height: 380px;
             }
 
-            .books-container {
-                padding: 40px 20px;
-            }
-
-            .book-section {
-                gap: 30px;
-                margin-bottom: 60px;
-                padding: 40px 0;
-            }
-
-            .book-visual {
-                justify-content: center;
-            }
-
-            .book-mockup {
+            .book-item {
                 width: 220px;
                 height: 330px;
-                transform: rotateY(-8deg) rotateX(2deg);
             }
 
-            .book-section:hover .book-mockup {
-                transform: rotateY(-3deg) rotateX(1deg);
+            .book-item:nth-child(1) {
+                left: 0;
+                top: 30px;
             }
 
-            .book-title {
-                font-size: 1.5rem;
+            .book-item:nth-child(2) {
+                right: 0;
+                top: 60px;
+                transform: translateX(20px) rotateY(8deg) rotateX(-2deg);
             }
 
-            .book-description {
-                font-size: 0.95rem;
-                text-align: left;
+            .book-item:nth-child(3) {
+                right: 0;
+                top: 120px;
+                transform: translateX(40px) rotateY(12deg) rotateX(-4deg);
             }
 
-            .book-cta-group {
-                flex-direction: column;
+            .book-item:nth-child(4) {
+                right: 0;
+                top: 180px;
+                transform: translateX(60px) rotateY(16deg) rotateX(-6deg);
             }
 
-            .book-cta {
-                width: 100%;
-                padding: 12px 30px;
+            .books-display {
+                margin-bottom: 60px;
             }
 
-            .intro-section {
-                padding: 50px 20px 40px;
+            .all-books-section {
+                margin-top: 80px;
             }
 
-            .intro-section h2 {
+            .all-books-section h2 {
                 font-size: 1.8rem;
+                margin-bottom: 40px;
             }
 
-            footer {
-                padding: 40px 20px;
+            .books-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Ranjeet's Books</h1>
-        <p class="tagline">Essential guides to EB-1A excellence, professional expertise, and immigration strategy from an EB-1A recipient and inventor</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Ranjeet's Books</h1>
+            <p>Master guides to EB-1A excellence, professional expertise, and immigration strategy</p>
+        </header>
 
-    <div class="intro-section">
-        <h2>Master Your Field</h2>
-        <p>Four comprehensive handbooks designed for EB-1A applicants, immigration professionals, coaches, and leaders seeking clarity on extraordinary ability, professional standing, and strategic petition development.</p>
-    </div>
+        <!-- Main Display -->
+        <div class="books-display">
+            <div class="book-stack">
+                <div class="book-item">
+                    <img src="book1-cover.jpg" alt="The EB-1A Extraordinary Ability Handbook">
+                </div>
+                <div class="book-item">
+                    <img src="book2-cover.jpg" alt="Extraordinary Ability, Documented">
+                </div>
+                <div class="book-item">
+                    <img src="book3-cover.jpg" alt="From Data to Enlightenment">
+                </div>
+                <div class="book-item">
+                    <img src="book4-cover.jpg" alt="The Reflexive Petition">
+                </div>
+            </div>
 
-    <div class="books-container">
-        <!-- Book 1 -->
-        <div class="book-section">
-            <div class="book-visual">
-                <div class="book-mockup">
-                    <div class="book-mockup-content">
+            <div class="book-info">
+                <h2>Complete Your Library</h2>
+                <p>Four comprehensive handbooks by Ranjeet S. Mudholkar, an EB-1A recipient and inventor. Designed for EB-1A applicants, immigration professionals, coaches, and leaders seeking clarity on extraordinary ability, professional standing, and strategic petition development.</p>
+                <p>Each book provides practical guidance, working templates, and evidence-based strategies grounded in current USCIS policy and immigration law.</p>
+                <a href="#all-books" class="book-cta">View All Books</a>
+            </div>
+        </div>
+
+        <!-- All Books Grid -->
+        <div class="all-books-section" id="all-books">
+            <h2>All Books</h2>
+
+            <div class="books-grid">
+                <!-- Book 1 -->
+                <div class="book-card">
+                    <div class="book-card-image">
                         <img src="book1-cover.jpg" alt="The EB-1A Extraordinary Ability Handbook">
                     </div>
+                    <div class="book-card-content">
+                        <span class="book-number">Book 1</span>
+                        <h3>The EB-1A Extraordinary Ability Handbook</h3>
+                        <p>A practical and legally grounded understanding of how the EB-1A extraordinary ability green card works. Covers the framework, the ten regulatory criteria, evidence strategy, and the complete procedure from Form I-140 through consular processing.</p>
+                        <a href="https://www.amazon.com/dp/B0HHB7F3B9" target="_blank" class="book-card-cta">Order Now</a>
+                    </div>
                 </div>
-            </div>
-            <div class="book-content">
-                <span class="book-number">01 / Educational Foundation</span>
-                <h3 class="book-title">The EB-1A Extraordinary Ability Handbook</h3>
-                <p class="book-subtitle">A Student Guide to Eligibility, Evidence and Procedure</p>
-                <p class="book-description">
-                    The EB-1A classification is widely discussed and often misunderstood. Some professionals assume it is reserved for Nobel laureates. Others treat the ten regulatory criteria as a checklist and collect awards without asking what those achievements actually prove. This handbook replaces both mistakes with a clear, practical and legally grounded understanding of how the EB-1A extraordinary ability green card works.
-                </p>
-                <p class="book-description">
-                    Part I explains the vocabulary, the three statutory requirements, the two-step analysis and each of the ten regulatory criteria. Part II answers 33 questions professionals actually ask. Part III collects reference material, checklists, and sources with clean links to official sources. Written by an EB-1A recipient, it emphasizes accuracy, honest evidence development and verifiability.
-                </p>
-                <div class="book-cta-group">
-                    <a href="https://www.amazon.com/dp/B0HHB7F3B9?lv=shuf&bestFormat=true" class="book-cta" target="_blank">Order Now</a>
-                    <a href="https://www.amazon.com/dp/B0HHB7F3B9?lv=shuf&bestFormat=true" class="book-cta secondary" target="_blank">View on Amazon</a>
-                </div>
-            </div>
-        </div>
 
-        <!-- Book 2 -->
-        <div class="book-section alternate">
-            <div class="book-visual">
-                <div class="book-mockup">
-                    <div class="book-mockup-content">
+                <!-- Book 2 -->
+                <div class="book-card">
+                    <div class="book-card-image">
                         <img src="book2-cover.jpg" alt="Extraordinary Ability, Documented">
                     </div>
+                    <div class="book-card-content">
+                        <span class="book-number">Book 2</span>
+                        <h3>Extraordinary Ability, Documented</h3>
+                        <p>The definitive reference for EB-1A petitions. Treats a petition as an argument built from documents rather than a checklist. Covers all ten criteria in detail with working templates, evidence architecture, and complete adjudication guidance.</p>
+                        <a href="https://www.amazon.com/dp/B0HH94D4PM" target="_blank" class="book-card-cta">Order Now</a>
+                    </div>
                 </div>
-            </div>
-            <div class="book-content">
-                <span class="book-number">02 / Professional Reference</span>
-                <h3 class="book-title">Extraordinary Ability, Documented</h3>
-                <p class="book-subtitle">The Definitive Guide to the EB-1A Green Card: Law, Evidence and the Professional Record</p>
-                <p class="book-description">
-                    The definitive reference for EB-1A petitions. This comprehensive guide treats a petition as an argument built from documents rather than a checklist to be gamed. It explains the statute and the regulation as written, the two-step analysis and final merits determination as USCIS applies them, and the standard of proof.
-                </p>
-                <p class="book-description">
-                    Each of the ten criteria receives its own chapter with elements, evidence, common mistakes and checklists. The high-salary criterion receives four chapters with government wage data and worked case studies. Further chapters cover recommendation letters, evidence architecture, RFEs, priority dates, adjustment of status, consular processing and what changes after approval. Every fee, form edition and policy was verified through August 2026.
-                </p>
-                <div class="book-cta-group">
-                    <a href="https://www.amazon.com/dp/B0HH94D4PM?lv=shuf&bestFormat=true" class="book-cta" target="_blank">Order Now</a>
-                    <a href="https://www.amazon.com/dp/B0HH94D4PM?lv=shuf&bestFormat=true" class="book-cta secondary" target="_blank">View on Amazon</a>
-                </div>
-            </div>
-        </div>
 
-        <!-- Book 3 -->
-        <div class="book-section">
-            <div class="book-visual">
-                <div class="book-mockup">
-                    <div class="book-mockup-content">
+                <!-- Book 3 -->
+                <div class="book-card">
+                    <div class="book-card-image">
                         <img src="book3-cover.jpg" alt="From Data to Enlightenment">
                     </div>
-                </div>
-            </div>
-            <div class="book-content">
-                <span class="book-number">03 / Professional Development</span>
-                <h3 class="book-title">From Data to Enlightenment</h3>
-                <p class="book-subtitle">The DISK-WE Model of Expertise-Learning State, Progressive Experience and Impact</p>
-                <p class="book-description">
-                    Where are you in your field, really? Most professionals cannot answer that honestly, because the words available—senior, experienced, expert—describe a title or years rather than the thing itself. This book gives you a better instrument: a profile of your expertise in three dimensions.
-                </p>
-                <p class="book-description">
-                    Based on U.S. Patent No. 11,989,680 (issued 2024), this book explains the patented DISK-WE method, the five pillars of professional standing, and the D.O.N.E. process that turns a career into a documented record. Includes worksheets, case studies, and practical guidance for scientists, educators, founders, artists and professionals seeking clarity on their actual expertise and what comes next.
-                </p>
-                <div class="book-cta-group">
-                    <a href="https://www.amazon.com/dp/B0HHD8JN92?lv=shuf&bestFormat=true" class="book-cta" target="_blank">Order Now</a>
-                    <a href="https://www.amazon.com/dp/B0HHD8JN92?lv=shuf&bestFormat=true" class="book-cta secondary" target="_blank">View on Amazon</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Book 4 -->
-        <div class="book-section alternate">
-            <div class="book-visual">
-                <div class="book-mockup">
-                    <div class="book-mockup-content">
-                        <img src="book4-cover.jpg" alt="The Reflexive Petition">
+                    <div class="book-card-content">
+                        <span class="book-number">Book 3</span>
+                        <h3>From Data to Enlightenment</h3>
+                        <p>Based on U.S. Patent No. 11,989,680. Explains the DISK-WE model for understanding professional expertise in three dimensions: learning state, progressive experience, and impact. Includes worksheets and case studies.</p>
+                        <a href="https://www.amazon.com/dp/B0HHD8JN92" target="_blank" class="book-card-cta">Order Now</a>
                     </div>
                 </div>
-            </div>
-            <div class="book-content">
-                <span class="book-number">04 / Advanced Methods</span>
-                <h3 class="book-title">The Reflexive Petition</h3>
-                <p class="book-subtitle">A Practitioner's Guide to EB-1A, O-1A, and National Interest Waiver Petitions</p>
-                <p class="book-description">
-                    An immigration petition is usually assembled as a stack of exhibits and a persuasive letter. The Reflexive Petition treats it as something else: an interconnected evidentiary system where every element connects to every other. When one record changes, you see what the change affects. When a claim lacks support, the system says so before the government does.
-                </p>
-                <p class="book-description">
-                    This method rests on Reflexive Category Theory and patent-pending methods from U.S. Patent Application No. 19/766,919. The book includes a controlled experiment comparing conventional and reflexive petitions side by side, seventeen practitioner tools, and complete coverage of EB-1A, O-1A, and NIW categories. For attorneys, paralegals, self-petitioners and legal-tech builders.
-                </p>
-                <div class="book-cta-group">
-                    <a href="https://www.amazon.com/dp/B0HH8276KM?lv=shuf&bestFormat=true" class="book-cta" target="_blank">Order Now</a>
-                    <a href="https://www.amazon.com/dp/B0HH8276KM?lv=shuf&bestFormat=true" class="book-cta secondary" target="_blank">View on Amazon</a>
+
+                <!-- Book 4 -->
+                <div class="book-card">
+                    <div class="book-card-image">
+                        <img src="book4-cover.jpg" alt="The Reflexive Petition">
+                    </div>
+                    <div class="book-card-content">
+                        <span class="book-number">Book 4</span>
+                        <h3>The Reflexive Petition</h3>
+                        <p>Treats immigration petitions as interconnected evidentiary systems. Uses patent-pending methods to create petitions that are complete, consistent, traceable and tested. Covers EB-1A, O-1A, and NIW categories.</p>
+                        <a href="https://www.amazon.com/dp/B0HH8276KM" target="_blank" class="book-card-cta">Order Now</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <div class="author-section">
-            <h3>About the Author</h3>
-            <p>Ranjeet S. Mudholkar is an EB-1A recipient and inventor named on U.S. Patent No. 11,989,680. He holds an M.S. in Finance and an M.S. in Global Management and is the Principal Coach and CEO of Next League Executive Board LLC, an Alternative Business Structure licensed by the Arizona Supreme Court.</p>
-            <div class="disclaimer">
-                <p>These books are educational materials and are not legal advice. Readers should consult a qualified U.S. immigration attorney about their own circumstances.</p>
-            </div>
+        <p><strong>About the Author</strong></p>
+        <p>Ranjeet S. Mudholkar is an EB-1A recipient and inventor named on U.S. Patent No. 11,989,680. He is the Principal Coach and CEO of Next League Executive Board LLC.</p>
+        <div class="disclaimer">
+            <p>These books are educational materials and are not legal advice. Readers should consult a qualified U.S. immigration attorney about their own circumstances.</p>
         </div>
     </footer>
 </body>
