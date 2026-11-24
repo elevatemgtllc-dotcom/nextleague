@@ -3,7 +3,6 @@
 #nlp-nov{display:block!important;visibility:visible!important;opacity:1!important;position:relative;z-index:1;--navy:#1E3768;--navy-deep:#0F1F3D;--gold:#C9A14A;--gold-lt:#E8CB7A;--ink:#14213D;--body:#3B4660;--muted:#6B7590;--line:#E4E7EE;--paper:#F6F7FA;--red:#C8102E;
   font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--body);line-height:1.65;-webkit-font-smoothing:antialiased;width:100%;max-width:100%;overflow:visible;overflow-x:clip;background:#fff}
 html,body{overflow-y:auto!important;height:auto!important;-webkit-overflow-scrolling:touch}
-.c-section:has(#nlp-nov),.c-row:has(#nlp-nov),.c-column:has(#nlp-nov),.c-custom-code:has(#nlp-nov),.custom-code-container:has(#nlp-nov){display:block!important;visibility:visible!important;height:auto!important;max-height:none!important}
 #nlp-nov *{box-sizing:border-box;margin:0;padding:0}
 #nlp-nov h1,#nlp-nov h2,#nlp-nov h3{font-family:'Montserrat',sans-serif;color:var(--ink);line-height:1.18;letter-spacing:-.01em}
 #nlp-nov a{text-decoration:none;color:var(--navy);font-weight:600}
@@ -584,12 +583,6 @@ html,body{overflow-y:auto!important;height:auto!important;-webkit-overflow-scrol
 <script>
 (function(){
   var root=document.getElementById('nlp-nov'); if(!root) return;
-  // Force every GHL wrapper around this block to show on all devices (overrides "desktop only" visibility)
-  function unhide(){var e=root.parentElement;while(e&&e!==document.body){var cs=getComputedStyle(e);
-    if(cs.display==='none'){e.style.setProperty('display',/inner/.test(e.className)?'flex':'block','important')}
-    if(cs.visibility==='hidden'){e.style.setProperty('visibility','visible','important')}
-    e=e.parentElement}}
-  unhide(); window.addEventListener('load',unhide); window.addEventListener('resize',unhide); setTimeout(unhide,1500);
   var END=new Date('2026-11-30T23:59:59-08:00').getTime();
   var boxes=root.querySelectorAll('[data-nlp-countdown]'), iv;
   function pad(n){return n<10?'0'+n:''+n}
