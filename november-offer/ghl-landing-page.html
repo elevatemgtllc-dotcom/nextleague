@@ -596,7 +596,8 @@ html,body{overflow-x:clip}
 
 <script>
 (function(){
-  var root=document.getElementById('nlp-nov'); if(!root) return;
+  var roots=document.querySelectorAll('[id="nlp-nov"]');
+  for(var ri=0;ri<roots.length;ri++){ if(roots[ri].getAttribute('data-nlp-init')) continue; roots[ri].setAttribute('data-nlp-init','1'); (function(root){
   /* ===== NLP SETTINGS: edit these lines only ===== */
   var NLP_OFFER_MONTH = 'november';   // after Nov 30 change to 'december'
   var NLP_DEADLINES = {
@@ -640,6 +641,7 @@ html,body{overflow-x:clip}
     sticky.classList.toggle('on',past&&!atFinal);
   }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  })(roots[ri]); }
 })();
 </script>
 
